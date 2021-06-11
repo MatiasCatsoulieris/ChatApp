@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menuSearch"
+        android:icon="@drawable/ic_search"
+        android:title="Search"
+        app:showAsAction="ifRoom" />
+    <item
+        android:icon="@drawable/ic_more"
+        android:title="More"
+        app:showAsAction="always">
+        <menu>
+            <item android:title="New group" android:id="@+id/itemNewGroup"/>
+            <item android:title="Settings" android:id="@+id/itemSettings"/>
+            <item
+                android:id="@+id/itemLogout"
+                android:title="Logout"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+
+</menu>

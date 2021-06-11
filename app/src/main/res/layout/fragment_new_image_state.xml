@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".view.NewImageStateFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.example.com.chatapp.view.canvas.CanvasImageState
+            android:id="@+id/canvas_image_new_state"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAddNewImageState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="26dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_action_send"
+            app:fabSize="normal" />
+
+        <RelativeLayout
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/bg_transparent">
+
+            <ImageButton
+                android:id="@+id/buttonFinish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="16dp"
+                android:background="@drawable/ripple_circular"
+                android:src="@drawable/ic_go_back" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgUserState"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/buttonFinish"
+                app:civ_border_color="@android:color/white"
+                app:civ_border_width="1dp" />
+
+            <ImageButton
+                android:id="@+id/buttonEnablePainting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="16dp"
+                android:layout_toStartOf="@id/buttonAddText"
+                android:background="@drawable/ripple_circular"
+                android:src="@drawable/ic_edit" />
+
+            <TextView
+                android:id="@+id/buttonAddText"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/buttonChangePaintColor"
+                android:background="@drawable/ripple_circular"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="T"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/buttonChangePaintColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="16dp"
+                android:background="@drawable/ripple_circular"
+                android:src="@drawable/ic_palette_color" />
+        </RelativeLayout>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtState"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:background="@null"
+            android:hint="Add new\n status"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textSize="32sp"
+            android:visibility="gone" />
+
+
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/includeFilterLayout"
+        layout="@layout/layout_filters"
+        />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

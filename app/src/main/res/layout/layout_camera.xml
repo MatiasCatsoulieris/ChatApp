@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/layoutCamera"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="32dp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true">
+
+    <ImageButton
+        android:layout_width="?actionBarSize"
+        android:layout_height="?actionBarSize"
+        android:id="@+id/buttonSwitchFlash"
+        android:src="@drawable/ic_flash_off"
+        android:background="@null"
+        android:cropToPadding="true"/>
+    <ImageButton
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:id="@+id/buttonTakePhoto"
+        android:src="@drawable/shape_take_photo"
+        android:layout_marginHorizontal="?actionBarSize"
+        android:background="@null"
+        android:cropToPadding="true"/>
+    <ImageButton
+        android:layout_width="?actionBarSize"
+        android:layout_height="?actionBarSize"
+        android:id="@+id/buttonSwitchCamera"
+        android:src="@drawable/ic_flip_camera"
+        android:background="@null"
+        android:cropToPadding="true"/>
+    </LinearLayout>
+</RelativeLayout>

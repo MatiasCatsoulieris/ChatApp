@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="user"
+            type="android.example.com.chatapp.model.User"  />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
+        android:orientation="horizontal"
+        android:paddingVertical="12dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/contactImg"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/android_default_icons"
+            />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtcontactName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{user.userName}"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtContactState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="State" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btnContactCall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="16dp"
+            android:background="@drawable/ripple_circular"
+            android:src="@drawable/ic_call_white"
+            android:tint="@color/colorAccent"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/btnContactVideo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/ripple_circular"
+            android:src="@drawable/ic_video"
+            android:tint="@color/colorAccent"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</layout>

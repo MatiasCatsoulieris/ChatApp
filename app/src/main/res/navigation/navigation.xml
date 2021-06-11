@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="android.example.com.chatapp.view.account.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/actionRegisterToHome"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/actionRegisterToLogin"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="android.example.com.chatapp.view.HomeFragment"
+        tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/actionHomeToLogin"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/actionHomeToContacts"
+            app:destination="@id/contactsFragment" />
+        <action
+            android:id="@+id/actionHomeToSettings"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/actionHomeToCamera"
+            app:destination="@id/cameraFragment" />
+        <action
+            android:id="@+id/actionHomeToState"
+            app:destination="@id/newStateFragment" />
+        <action
+            android:id="@+id/actionHomeToStatusWatch"
+            app:destination="@id/statusWatchFragment" />
+        <action
+            android:id="@+id/actionHomeToPhotoMessage"
+            app:destination="@id/photoMessageFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="android.example.com.chatapp.view.account.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/actionLoginToRegister"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/actionLoginToRecover"
+            app:destination="@id/recoverPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="android.example.com.chatapp.view.menu.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/actionPofileToCamera"
+            app:destination="@id/cameraFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recoverPasswordFragment"
+        android:name="android.example.com.chatapp.view.account.RecoverPasswordFragment"
+        android:label="fragment_recover_password"
+        tools:layout="@layout/fragment_recover_password" />
+    <fragment
+        android:id="@+id/contactsFragment"
+        android:name="android.example.com.chatapp.view.ContactsFragment"
+        android:label="contacts_fragment"
+        tools:layout="@layout/contacts_fragment" >
+        <argument
+            android:name="TYPE_ACTION"
+            app:argType="string" />
+        <action
+            android:id="@+id/actionContactToChat"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="android.example.com.chatapp.view.menu.SettingsFragment"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/actionSettingsToProfile"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="android.example.com.chatapp.view.pagerFragments.CameraFragment"
+        android:label="fragment_camera"
+        tools:layout="@layout/fragment_camera" >
+        <argument
+            android:name='"UID"'
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="typeAction"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/actionCameraToImageState"
+            app:destination="@id/newImageStateFragment" />
+        <action
+            android:id="@+id/actionCameraToPhotoMessage"
+            app:destination="@id/photoMessageFragment" /><![CDATA[
+
+
+        >
+
+
+    ]]>
+    </fragment>
+    <fragment
+        android:id="@+id/newStateFragment"
+        android:name="android.example.com.chatapp.view.NewStateFragment"
+        android:label="fragment_new_state"
+        tools:layout="@layout/fragment_new_state" />
+    <fragment
+        android:id="@+id/newImageStateFragment"
+        android:name="android.example.com.chatapp.view.NewImageStateFragment"
+        android:label="fragment_new_image_state"
+        tools:layout="@layout/fragment_new_image_state" >
+        <argument
+            android:name="ImgUri"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/statusWatchFragment"
+        android:name="android.example.com.chatapp.view.status.StatusWatchFragment"
+        android:label="fragment_status_watch"
+        tools:layout="@layout/fragment_status_watch" >
+        <argument
+            android:name="UID"
+            app:argType="string" />
+        <action
+            android:id="@+id/actionStatusWatchToSpectatorList"
+            app:destination="@id/spectatorListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/spectatorListFragment"
+        android:name="android.example.com.chatapp.view.SpectatorListFragment"
+        android:label="SpectatorListFragment" >
+        <argument
+            android:name="statusId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/watchGifFragment"
+        android:name="android.example.com.chatapp.view.chat.WatchGifFragment"
+        android:label="fragment_watch_gif"
+        tools:layout="@layout/fragment_watch_gif" >
+        <argument
+            android:name="KeyGIFId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/watchDocPDFFragment"
+        android:name="android.example.com.chatapp.view.chat.WatchDocPDFFragment"
+        android:label="fragment_watch_doc_pdf"
+        tools:layout="@layout/fragment_watch_doc_pdf" >
+        <argument
+            android:name="PdfUrl"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/watchImageFragment"
+        android:name="android.example.com.chatapp.view.chat.WatchImageFragment"
+        android:label="fragment_watch_image"
+        tools:layout="@layout/fragment_watch_image" >
+        <argument
+            android:name="ImageUrl"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="android.example.com.chatapp.view.chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" >
+        <action
+            android:id="@+id/actionChatToWatchGif"
+            app:destination="@id/watchGifFragment" />
+        <action
+            android:id="@+id/actionChatToWatchDocPdf"
+            app:destination="@id/watchDocPDFFragment" />
+        <action
+            android:id="@+id/actionChatToWatchImage"
+            app:destination="@id/watchImageFragment"
+            app:enterAnim="@anim/in_slide_right"
+            app:exitAnim="@anim/out_slide_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@anim/out_slide_right" />
+        <action
+            android:id="@+id/actionChatToCamera"
+            app:destination="@id/cameraFragment" />
+        <argument
+            android:name="KeyUID"
+            app:argType="string" />
+        <action
+            android:id="@+id/actionChatToUserProfile"
+            app:destination="@id/userProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/photoMessageFragment"
+        android:name="android.example.com.chatapp.view.chat.PhotoMessageFragment"
+        android:label="fragment_photo_message"
+        tools:layout="@layout/fragment_photo_message">
+        <action
+            android:id="@+id/actionPhotoMessageToContacts"
+            app:destination="@id/contactsFragment" />
+        <argument
+            android:name="KeyUID"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="KeyImg"
+            app:argType="string" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="ChatApp.PhotoMessageFragment" />
+        <action
+            android:id="@+id/actionPhotoMessageToChat"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="android.example.com.chatapp.view.chat.UserProfileFragment"
+        android:label="user_profile_fragment"
+        tools:layout="@layout/user_profile_fragment" >
+        <argument
+            android:name="KeyUID"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_userProfileFragment_to_watchImageFragment"
+            app:destination="@id/watchImageFragment" />
+    </fragment>
+</navigation>

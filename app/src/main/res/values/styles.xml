@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar.Bridge">
+            <item name="colorPrimary">@color/colorPrimary</item>
+            <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+            <item name="colorAccent">@color/colorAccent</item>
+            <item name="android:navigationBarColor">@android:color/black</item>
+        </style>
+
+        <style name="SplashScreenTheme" parent="AppTheme">
+            <item name="android:windowBackground">@drawable/splash_background</item>
+        </style>
+
+        <style name="MainTheme" parent="AppTheme">
+            <item name="windowActionModeOverlay">true</item>
+            <item name="actionModeBackground">@color/colorPrimary</item>
+        </style>
+
+    <style name="roundedImageViewRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+</resources>

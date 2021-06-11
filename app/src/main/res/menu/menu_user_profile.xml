@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:icon="@drawable/ic_more_white"
+        android:title="Options"
+        app:showAsAction="always">
+
+        <menu>
+            <item android:id="@+id/menuUserShare"
+                android:title="Share"/>
+            <item android:id="@+id/menuUserEdit"
+                android:title="Edit" />
+            <item android:id="@+id/menuUserSeeInContactList"
+                android:title="See in contact list"/>
+        </menu>
+    </item>
+</menu>

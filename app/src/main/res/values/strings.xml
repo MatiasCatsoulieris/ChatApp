@@ -1,0 +1,15 @@
+<resources>
+    <string name="giphy_api_key">p0Mn4AmY77z956H9w8l5n03GfahOwnNy</string>
+
+
+    <string name="app_name">ChatApp</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_info_call">Press the $ at the lower left of\n
+        the screen for making a call</string>
+    <string name="description_edittext_user_profile">This is not a username or a PIN. This name will be visible for all your contacts</string>
+    <string name="imgUserTransition">imgUserTransition</string>
+    <string name="imgChatTransition">imgChatTransition</string>
+    <string name="txt_info_status">To share a status,press\n $ or % at the bottom\n of the screen</string>
+    <string name="txt_info_chats">To chat, tap $ in the bottom\n part of the screen</string>
+
+</resources>

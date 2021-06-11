@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:icon="@drawable/ic_video_white"
+        android:title="Video"
+        app:showAsAction="always"/>
+    <item android:icon="@drawable/ic_call_white"
+        android:title="Call"
+        app:showAsAction="always"/>
+    <item android:icon="@drawable/ic_more_white"
+        android:title="More"
+        app:showAsAction="always">
+
+        <menu>
+            <item android:id="@+id/menuSaveChat"
+                android:title="Save Chat"/>
+            <item android:title="See contact" />
+            <item android:title="Files, links and docs"/>
+            <item android:title="Search"/>
+            <item android:title="Mute notifications"/>
+            <item android:title="Background"/>
+            <item android:title="More">
+                <menu>
+                    <item android:title="Report"/>
+                    <item android:title="Block"/>
+                    <item android:title="Empty chat"/>
+                    <item android:title="Export chat"/>
+                    <item android:title="Create shortcut"/>
+                </menu>
+            </item>
+        </menu>
+    </item>
+</menu>
