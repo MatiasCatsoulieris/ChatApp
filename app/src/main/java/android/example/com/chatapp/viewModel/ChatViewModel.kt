@@ -14,7 +14,7 @@ class ChatViewModel : ViewModel() {
 
     val receiverUid = MutableLiveData<String>()
     val receiverLiveData: LiveData<User> get() = _receiverLiveData
-    val isMessageSent = MutableLiveData<Boolean>()
+    val isMessageSent = MutableLiveData<Event<Boolean>>()
     private lateinit var query : Query
     lateinit var array: FirestoreArray<Message>
 
@@ -42,25 +42,25 @@ class ChatViewModel : ViewModel() {
             FirebaseDBService.addUserToContacts(uidReceiver, message).collect {
                 if (it) {
                     FirebaseDBService.sendMessage(uidReceiver, message).collect { isSent ->
-                        isMessageSent.value = isSent
+                        isMessageSent.value = Event<Boolean>(isSent)
                     }
                 } else {
-                    isMessageSent.value = false
+                    isMessageSent.value = Event(false)
                 }
             }
         }
     }
 
     ////////////////// Sending file message
-    val fileUploadProgress = MutableLiveData<Double>()
-    val fileUploadSuccessful = MutableLiveData<Boolean>()
+    val fileUploadProgress = MutableLiveData<Event<Double>>()
+    val fileUploadSuccessful = MutableLiveData<Event<Boolean>>()
     private val upLoadProgressObserver = Observer<Double>() {
         it?.let {
-            fileUploadProgress.value = it
+            fileUploadProgress.value = Event(it)
         }
     }
     private val uploadSuccessfulObserver = Observer<Boolean> {
-        fileUploadSuccessful.value = it
+        fileUploadSuccessful.value = Event(it)
         FirebaseStorage.docFileUploadProgress.removeObserver(upLoadProgressObserver)
 
     }
@@ -120,8 +120,6 @@ class ChatViewModel : ViewModel() {
         }
         super.onCleared()
     }
-
-
 
 
 }

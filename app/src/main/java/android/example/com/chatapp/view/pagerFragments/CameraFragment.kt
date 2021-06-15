@@ -12,7 +12,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.example.com.chatapp.databinding.FragmentCameraBinding
 import android.example.com.chatapp.util.*
+import android.example.com.chatapp.view.HomeFragment
+import android.example.com.chatapp.view.HomeFragmentDirections
 import android.example.com.chatapp.view.adapters.GalleryAdapter
+import android.example.com.chatapp.view.menu.ProfileFragment
 import android.example.com.chatapp.viewModel.CameraViewModel
 import android.net.Uri
 import android.util.Log
@@ -129,8 +132,29 @@ class CameraFragment : Fragment() {
                         binding.includeLayoutCamera.buttonTakePhoto.isEnabled = true
                         when(typeAction) {
                             CAMERA_ACTION_MESSAGE -> {
-                                Navigation.findNavController(binding.root)
-                                    .navigate(CameraFragmentDirections.actionCameraToPhotoMessage(uidReceiver, file.path))
+                                val navHost =
+                                    requireActivity().supportFragmentManager.findFragmentById(R.id.fragmentContainer)
+                                navHost?.let { navFragment ->
+                                    navFragment.childFragmentManager.primaryNavigationFragment?.let { fragment ->
+                                        if (fragment is HomeFragment) {
+                                            Navigation.findNavController(binding.root)
+                                                .navigate(
+                                                    HomeFragmentDirections.actionHomeToPhotoMessage(
+                                                        uidReceiver,
+                                                        file.path
+                                                    )
+                                                )
+                                        } else {
+                                            Navigation.findNavController(binding.root)
+                                                .navigate(
+                                                    CameraFragmentDirections.actionCameraToPhotoMessage(
+                                                        uidReceiver,
+                                                        file.path
+                                                    )
+                                                )
+                                        }
+                                    }
+                                }
                             }
                             CAMERA_ACTION_STATE -> {
                                 Navigation.findNavController(binding.root)

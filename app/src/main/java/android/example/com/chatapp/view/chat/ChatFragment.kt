@@ -487,7 +487,7 @@ class ChatFragment : Fragment(), MessageSent, GiphyDialogFragment.GifSelectionLi
                     binding.txtEmptychat.visibility = View.VISIBLE
                 } else {
                     binding.txtEmptychat.visibility = View.GONE
-                    binding.recyclerViewMessages.smoothScrollToPosition(chatAdapter.itemCount)
+                    binding.recyclerViewMessages.smoothScrollToPosition(0)
                 }
             }
         }
@@ -517,22 +517,26 @@ class ChatFragment : Fragment(), MessageSent, GiphyDialogFragment.GifSelectionLi
             }
         })
         viewModel.isMessageSent.observe(viewLifecycleOwner, {
-            it?.let {
-                onMessageSent(it)
+            it.getContentIfNotHandled()?.let { isSent ->
+                onMessageSent(isSent)
 
             }
         })
         viewModel.fileUploadProgress.observe(viewLifecycleOwner, {
-            val messageDialogTextView = dialog.findViewById<TextView>(R.id.messageDialog)
-            messageDialogTextView.text = "Upload progress: " + it.toInt() + "%"
+            it.getContentIfNotHandled()?.let { progress ->
+                val messageDialogTextView = dialog.findViewById<TextView>(R.id.messageDialog)
+                messageDialogTextView.text = "Upload progress: " + progress.toInt() + "%"
+            }
 
         })
         viewModel.fileUploadSuccessful.observe(viewLifecycleOwner, {
-            if (!it) {
-                dialog.dismiss()
-                Toast.makeText(requireContext(), "Upload failed", Toast.LENGTH_SHORT).show()
-            } else {
-                dialog.dismiss()
+            it.getContentIfNotHandled()?.let { isSuccessful ->
+                if (!isSuccessful) {
+                    dialog.dismiss()
+                    Toast.makeText(requireContext(), "Upload failed", Toast.LENGTH_SHORT).show()
+                } else {
+                    dialog.dismiss()
+                }
             }
         })
         viewModel.videoUploadProgress.observe(viewLifecycleOwner, {

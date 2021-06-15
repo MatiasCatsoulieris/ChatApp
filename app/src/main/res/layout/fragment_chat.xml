@@ -78,7 +78,10 @@
             android:layout_above="@id/layoutBottom"
             android:layout_below="@id/toolbar"
             android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:stackFromEnd="true"
+            app:reverseLayout="true"
+            />
 
         <include layout="@layout/layout_attach_file"
             android:id="@+id/layoutAttachFiles"

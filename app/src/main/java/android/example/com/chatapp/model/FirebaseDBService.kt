@@ -374,7 +374,7 @@ object FirebaseDBService {
         .collection(FirebaseConstants.CHAT_CHANNELS).document(FbUser.getUserId()!!)
         .collection(FirebaseConstants.CHATS).document(uidReceiver)
         .collection(FirebaseConstants.MESSAGES)
-        .orderBy("timestamp", Query.Direction.ASCENDING)
+        .orderBy("timestamp", Query.Direction.DESCENDING)
 
     ////
 

@@ -19,6 +19,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import java.io.File
 
 
 class PhotoMessageFragment : Fragment(), MessageSent {
@@ -81,7 +82,8 @@ class PhotoMessageFragment : Fragment(), MessageSent {
                 ACTION_SEND_PHOTO_MESSAGE))
             } else {
                 viewModel.receiverUid.value = uidReceiver
-                viewModel.sendFileMessage(Uri.parse(imgUriString), uidReceiver!!,
+                viewModel.sendFileMessage(Uri.fromFile(
+                    File(imgUriString)), uidReceiver!!,
                     binding.txtPhotoMessage.text.toString(),"photos", ".jpeg", MessageType.TYPE_PHOTO)
                 dialog = createCustomDialog(requireContext(),
                     "Sending image...", null)
@@ -102,20 +104,30 @@ class PhotoMessageFragment : Fragment(), MessageSent {
 
     private fun observeViewModel() {
         viewModel.isMessageSent.observe(viewLifecycleOwner, {
-            it?.let {
-                onMessageSent(it)
-            }
+             it.getContentIfNotHandled()?.let { isSent -> onMessageSent(isSent) }
+
         })
         viewModel.fileUploadProgress.observe(viewLifecycleOwner, {
-            val messageDialogTextView = dialog.findViewById<TextView>(R.id.messageDialog)
-            messageDialogTextView.text = "Upload progress: " + it.toInt() + "%"
+            it.getContentIfNotHandled()?.let { progress ->
+                if(this::dialog.isInitialized) {
+                    val messageDialogTextView = dialog.findViewById<TextView>(R.id.messageDialog)
+                    messageDialogTextView.text = "Upload progress: " + progress.toInt() + "%"
+                }
+            }
         })
         viewModel.fileUploadSuccessful.observe(viewLifecycleOwner, {
-            if (!it) {
-                dialog.dismiss()
-                Toast.makeText(requireContext(), "Upload failed", Toast.LENGTH_SHORT).show()
-            } else {
-                dialog.dismiss()
+            it.getContentIfNotHandled()?.let { isSuccessful ->
+                if (isSuccessful) {
+                    if (this::dialog.isInitialized) {
+                        dialog.dismiss()
+                    }
+
+                } else {
+                    Toast.makeText(requireContext(), "Upload failed", Toast.LENGTH_SHORT).show()
+                    if (this::dialog.isInitialized) {
+                        dialog.dismiss()
+                    }
+                }
             }
         })
     }
@@ -124,8 +136,6 @@ class PhotoMessageFragment : Fragment(), MessageSent {
         if(isMessageSent) {
             Navigation.findNavController(binding.root)
                 .navigate(PhotoMessageFragmentDirections.actionPhotoMessageToChat(uidReceiver!!))
-        } else {
-            Toast.makeText(requireContext(), "Error sending photo...", Toast.LENGTH_SHORT).show()
         }
     }
     override fun onDestroy() {

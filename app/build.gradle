@@ -115,9 +115,6 @@ dependencies {
     //Giphy
     implementation 'com.giphy.sdk:ui:1.2.8'
 
-    //Filters
-    implementation 'jp.wasabeef:glide-transformations:4.0.0'
-    implementation 'jp.co.cyberagent.android:gpuimage:2.0.4'
 
     //Stories
     implementation 'com.github.shts:StoriesProgressView:3.0.0'

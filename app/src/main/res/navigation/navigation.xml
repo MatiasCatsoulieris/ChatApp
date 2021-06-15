@@ -117,13 +117,7 @@
             app:destination="@id/newImageStateFragment" />
         <action
             android:id="@+id/actionCameraToPhotoMessage"
-            app:destination="@id/photoMessageFragment" /><![CDATA[
-
-
-        >
-
-
-    ]]>
+            app:destination="@id/photoMessageFragment" />
     </fragment>
     <fragment
         android:id="@+id/newStateFragment"
@@ -234,7 +228,9 @@
             app:uri="ChatApp.PhotoMessageFragment" />
         <action
             android:id="@+id/actionPhotoMessageToChat"
-            app:destination="@id/chatFragment" />
+            app:destination="@id/chatFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/userProfileFragment"
