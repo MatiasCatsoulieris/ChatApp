@@ -2,9 +2,8 @@
 
 A simple messaging app similar to Whatsapp where i can show the things i´ve learned so far.
 
-This app is still in progress as I debug and update funcionalities.
 
-This is app currently uses: MVVM, Firebase, LiveData, Coroutines, Flow, Navigation Component, Glide.
+This app currently uses: MVVM, Firebase, LiveData, Coroutines, Flow, Navigation Component, Glide.
 
 Here is how it looks: 
 
